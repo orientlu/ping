@@ -569,8 +569,8 @@ func (p *Pinger) recvICMP(
 	conn packetConn,
 	recv chan<- *packet,
 ) error {
-	// Start by waiting for 50 µs and increase to a possible maximum of ~ 100 ms.
-	expBackoff := newExpBackoff(50*time.Microsecond, 11)
+	// Start by waiting for 500 ms and increase to a possible maximum of ~ 5s.
+	expBackoff := newExpBackoff(500*time.Millisecond, 11)
 	delay := expBackoff.Get()
 
 	for {
